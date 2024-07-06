@@ -1,0 +1,44 @@
+[gd_scene load_steps=6 format=3 uid="uid://cy1jj7wk4p3b1"]
+
+[ext_resource type="PackedScene" uid="uid://bwjb5lkb6j3sw" path="res://resources/textures/0/carpet.blend" id="1_x74qr"]
+[ext_resource type="PackedScene" uid="uid://d1nqpwrp3kisd" path="res://resources/textures/0/ceiling.tscn" id="5_xn1bs"]
+[ext_resource type="PackedScene" uid="uid://bbgrvym817423" path="res://resources/textures/0/ceiling_4.tscn" id="6_opw66"]
+[ext_resource type="PackedScene" uid="uid://gadose58agy2" path="res://resources/textures/0/ceiling_2.tscn" id="7_eqa4n"]
+[ext_resource type="PackedScene" uid="uid://cdvy20g6edy0v" path="res://resources/textures/0/ceiling_3.tscn" id="8_uq7m3"]
+
+[node name="Level_0_sec_3" type="Node3D"]
+
+[node name="Floor" type="Node3D" parent="."]
+
+[node name="carpet" parent="Floor" instance=ExtResource("1_x74qr")]
+
+[node name="Walls" type="Node3D" parent="."]
+
+[node name="Ceiling" type="Node3D" parent="."]
+
+[node name="ceiling8" parent="Ceiling" instance=ExtResource("5_xn1bs")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 3.95, -9)
+
+[node name="ceiling11" parent="Ceiling" instance=ExtResource("6_opw66")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 3.95, 9)
+
+[node name="ceiling10" parent="Ceiling" instance=ExtResource("6_opw66")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 3.95, 9)
+
+[node name="ceiling12" parent="Ceiling" instance=ExtResource("7_eqa4n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.95, 9)
+
+[node name="ceiling13" parent="Ceiling" instance=ExtResource("7_eqa4n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 3.95, 0)
+
+[node name="ceiling14" parent="Ceiling" instance=ExtResource("7_eqa4n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 3.95, 0)
+
+[node name="ceiling15" parent="Ceiling" instance=ExtResource("7_eqa4n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.95, -9)
+
+[node name="ceiling4" parent="Ceiling" instance=ExtResource("8_uq7m3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.95, 0)
+
+[node name="ceiling5" parent="Ceiling" instance=ExtResource("8_uq7m3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 3.95, -9)

@@ -1,0 +1,166 @@
+[gd_scene load_steps=19 format=3 uid="uid://bwk036jkw4duh"]
+
+[ext_resource type="Texture2D" uid="uid://bls2y244t6t5v" path="res://resources/textures/1/floor_concrete_base_color.png" id="1_ocbuv"]
+[ext_resource type="Texture2D" uid="uid://cmsk5x1dnmnkf" path="res://resources/textures/1/floor_concrete_height.png" id="2_rw6py"]
+[ext_resource type="Texture2D" uid="uid://dyot4coatufhv" path="res://resources/textures/1/floor_concrete_normal.png" id="3_tsugr"]
+[ext_resource type="Texture2D" uid="uid://y6lmu02nwr3x" path="res://resources/textures/1/concrete_floor_water.tres" id="4_h01in"]
+[ext_resource type="Texture2D" uid="uid://cod344wjl8lyk" path="res://resources/textures/1/concrete_puddle_alpha_correction.png" id="5_dvkih"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vql02"]
+resource_name = "Concrete"
+cull_mode = 2
+albedo_texture = ExtResource("1_ocbuv")
+metallic_texture = ExtResource("2_rw6py")
+metallic_texture_channel = 2
+roughness_texture = ExtResource("2_rw6py")
+roughness_texture_channel = 1
+normal_enabled = true
+normal_texture = ExtResource("3_tsugr")
+uv1_scale = Vector3(4, 4, 1)
+uv1_offset = Vector3(0, -3, 0)
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_fi7yu"]
+_surfaces = [{
+"aabb": AABB(-10, 0, -10, 20, 1e-05, 20),
+"format": 34896613377,
+"index_count": 6,
+"index_data": PackedByteArray(0, 0, 3, 0, 1, 0, 0, 0, 2, 0, 3, 0),
+"name": "Concrete",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 4,
+"vertex_data": PackedByteArray(0, 0, 0, 0, 254, 255, 0, 0, 255, 255, 0, 0, 254, 255, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 255, 255, 0, 0, 0, 0, 0, 0)
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_45yi1"]
+resource_name = "concrete_floor_Plane"
+lightmap_size_hint = Vector2i(402, 402)
+_surfaces = [{
+"aabb": AABB(-10, 0, -10, 20, 1e-05, 19.9997),
+"attribute_data": PackedByteArray(0, 0, 0, 0, 0, 0, 128, 63, 125, 174, 127, 63, 125, 174, 127, 63, 0, 0, 128, 63, 0, 0, 0, 0, 94, 6, 163, 58, 94, 6, 163, 58, 0, 0, 128, 63, 0, 0, 128, 63, 125, 174, 127, 63, 94, 6, 163, 58, 0, 0, 0, 0, 0, 0, 0, 0, 94, 6, 163, 58, 125, 174, 127, 63),
+"format": 34359742519,
+"index_count": 6,
+"index_data": PackedByteArray(0, 0, 1, 0, 2, 0, 0, 0, 3, 0, 1, 0),
+"material": SubResource("StandardMaterial3D_vql02"),
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 4,
+"vertex_data": PackedByteArray(0, 0, 32, 193, 0, 0, 0, 0, 202, 254, 31, 65, 0, 0, 32, 65, 0, 0, 0, 0, 0, 0, 32, 193, 0, 0, 32, 65, 0, 0, 0, 0, 202, 254, 31, 65, 0, 0, 32, 193, 0, 0, 0, 0, 0, 0, 32, 193, 255, 127, 253, 255, 254, 255, 255, 191, 255, 127, 253, 255, 254, 255, 255, 191, 255, 127, 253, 255, 254, 255, 255, 191, 255, 127, 253, 255, 254, 255, 255, 191)
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_fi7yu")
+
+[sub_resource type="GDScript" id="GDScript_c6siv"]
+script/source = "@tool
+extends MeshInstance3D
+
+@export
+var wet : bool = true :
+	set(v):
+		wet = v
+		$MeshPuddles.visible = v
+"
+
+[sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_a6f0r"]
+expanded_output_ports = [0]
+texture = ExtResource("4_h01in")
+
+[sub_resource type="VisualShaderNodeFloatConstant" id="VisualShaderNodeFloatConstant_7nxg0"]
+constant = 1.0
+
+[sub_resource type="VisualShaderNodeFloatConstant" id="VisualShaderNodeFloatConstant_syie6"]
+
+[sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_cvvqy"]
+expanded_output_ports = [0]
+texture = ExtResource("5_dvkih")
+
+[sub_resource type="VisualShaderNodeFloatOp" id="VisualShaderNodeFloatOp_kcijc"]
+operator = 1
+
+[sub_resource type="VisualShaderNodeClamp" id="VisualShaderNodeClamp_jgh1r"]
+
+[sub_resource type="VisualShader" id="VisualShader_ci1c6"]
+code = "shader_type spatial;
+render_mode blend_mix, depth_draw_never, cull_back, diffuse_lambert, specular_schlick_ggx;
+
+uniform sampler2D tex_frg_2;
+uniform sampler2D tex_frg_6;
+
+
+
+void fragment() {
+// Texture2D:2
+	vec4 n_out2p0 = texture(tex_frg_2, UV);
+	float n_out2p4 = n_out2p0.a;
+
+
+// Texture2D:6
+	vec4 n_out6p0 = texture(tex_frg_6, UV);
+	float n_out6p1 = n_out6p0.r;
+
+
+// FloatOp:7
+	float n_out7p0 = n_out2p4 - n_out6p1;
+
+
+// Clamp:8
+	float n_in8p1 = 0.00000;
+	float n_in8p2 = 1.00000;
+	float n_out8p0 = clamp(n_out7p0, n_in8p1, n_in8p2);
+
+
+// FloatConstant:4
+	float n_out4p0 = 1.000000;
+
+
+// FloatConstant:5
+	float n_out5p0 = 0.000000;
+
+
+// Output:0
+	ALBEDO = vec3(n_out2p0.xyz);
+	ALPHA = n_out8p0;
+	METALLIC = n_out4p0;
+	ROUGHNESS = n_out5p0;
+	SPECULAR = n_out4p0;
+	AO = n_out4p0;
+	AO_LIGHT_AFFECT = n_out4p0;
+	ANISOTROPY = n_out4p0;
+
+
+}
+"
+modes/depth_draw = 2
+nodes/fragment/0/position = Vector2(580, 40)
+nodes/fragment/2/node = SubResource("VisualShaderNodeTexture_a6f0r")
+nodes/fragment/2/position = Vector2(-280, -220)
+nodes/fragment/4/node = SubResource("VisualShaderNodeFloatConstant_7nxg0")
+nodes/fragment/4/position = Vector2(-20, 180)
+nodes/fragment/5/node = SubResource("VisualShaderNodeFloatConstant_syie6")
+nodes/fragment/5/position = Vector2(-20, 260)
+nodes/fragment/6/node = SubResource("VisualShaderNodeTexture_cvvqy")
+nodes/fragment/6/position = Vector2(-280, 60)
+nodes/fragment/7/node = SubResource("VisualShaderNodeFloatOp_kcijc")
+nodes/fragment/7/position = Vector2(180, -40)
+nodes/fragment/8/node = SubResource("VisualShaderNodeClamp_jgh1r")
+nodes/fragment/8/position = Vector2(380, -60)
+nodes/fragment/connections = PackedInt32Array(2, 0, 0, 0, 4, 0, 0, 2, 5, 0, 0, 3, 4, 0, 0, 4, 4, 0, 0, 7, 4, 0, 0, 6, 4, 0, 0, 15, 2, 4, 7, 0, 6, 1, 7, 1, 7, 0, 8, 0, 8, 0, 0, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5625n"]
+render_priority = 0
+shader = SubResource("VisualShader_ci1c6")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_idxcs"]
+material = SubResource("ShaderMaterial_5625n")
+size = Vector2(20, 20)
+
+[node name="ConcreteFloor" type="MeshInstance3D"]
+mesh = SubResource("ArrayMesh_45yi1")
+skeleton = NodePath("")
+script = SubResource("GDScript_c6siv")
+
+[node name="MeshPuddles" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.001, 0)
+mesh = SubResource("PlaneMesh_idxcs")
+skeleton = NodePath("")

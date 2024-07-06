@@ -1,0 +1,57 @@
+[gd_scene load_steps=7 format=3 uid="uid://cb08y20f74esf"]
+
+[ext_resource type="Texture2D" uid="uid://ckuunft5ofrgb" path="res://resources/textures/1/wall/concrete_layers_02_diff_1k.jpg" id="1_amsoo"]
+[ext_resource type="Texture2D" uid="uid://dt1f3j7srrdkm" path="res://resources/textures/1/wall/concrete_layers_02_disp_1k.png" id="2_fmtbb"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ewthc"]
+resource_name = "Halls"
+cull_mode = 2
+albedo_texture = ExtResource("1_amsoo")
+normal_enabled = true
+normal_texture = ExtResource("2_fmtbb")
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_4kwif"]
+_surfaces = [{
+"aabb": AABB(-1.5, -1, -0.5, 3, 4, 1.00001),
+"format": 34896613377,
+"index_count": 18,
+"index_data": PackedByteArray(2, 0, 7, 0, 3, 0, 2, 0, 6, 0, 7, 0, 4, 0, 1, 0, 5, 0, 4, 0, 0, 0, 1, 0, 1, 0, 7, 0, 5, 0, 1, 0, 3, 0, 7, 0),
+"name": "Halls",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 8,
+"vertex_data": PackedByteArray(0, 0, 0, 0, 254, 255, 0, 0, 0, 0, 255, 255, 254, 255, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 255, 255, 0, 0, 0, 0, 255, 255, 0, 0, 254, 255, 0, 0, 255, 255, 255, 255, 254, 255, 0, 0, 255, 255, 0, 0, 0, 0, 0, 0, 255, 255, 255, 255, 0, 0, 0, 0)
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_u1fbg"]
+resource_name = "parkinglots_Cube_010"
+lightmap_size_hint = Vector2i(126, 106)
+_surfaces = [{
+"aabb": AABB(-1.5, -1, -0.5, 3, 4, 0.999995),
+"attribute_data": PackedByteArray(0, 0, 128, 63, 0, 0, 128, 63, 49, 12, 3, 63, 232, 144, 154, 59, 0, 0, 0, 0, 0, 0, 0, 0, 240, 251, 126, 63, 135, 212, 68, 63, 0, 0, 128, 63, 0, 0, 0, 0, 49, 12, 3, 63, 135, 212, 68, 63, 0, 0, 0, 0, 0, 0, 128, 63, 240, 251, 126, 63, 232, 144, 154, 59, 0, 0, 128, 63, 0, 0, 128, 63, 33, 8, 130, 59, 232, 144, 154, 59, 0, 0, 0, 0, 0, 0, 0, 0, 158, 231, 249, 62, 135, 212, 68, 63, 0, 0, 128, 63, 0, 0, 0, 0, 33, 8, 130, 59, 135, 212, 68, 63, 0, 0, 0, 0, 0, 0, 128, 63, 158, 231, 249, 62, 232, 144, 154, 59, 160, 0, 160, 56, 160, 0, 160, 56, 158, 231, 249, 62, 222, 202, 126, 63, 128, 2, 128, 62, 192, 0, 64, 56, 33, 8, 130, 59, 82, 19, 76, 63, 192, 252, 63, 63, 160, 0, 160, 56, 33, 8, 130, 59, 222, 202, 126, 63, 192, 252, 63, 63, 160, 0, 160, 56, 158, 231, 249, 62, 82, 19, 76, 63),
+"format": 34359742519,
+"index_count": 18,
+"index_data": PackedByteArray(0, 0, 1, 0, 2, 0, 0, 0, 3, 0, 1, 0, 4, 0, 5, 0, 6, 0, 4, 0, 7, 0, 5, 0, 8, 0, 9, 0, 10, 0, 8, 0, 11, 0, 9, 0),
+"material": SubResource("StandardMaterial3D_ewthc"),
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 12,
+"vertex_data": PackedByteArray(0, 0, 192, 191, 0, 0, 128, 191, 0, 0, 0, 191, 0, 0, 192, 63, 0, 0, 64, 64, 0, 0, 0, 191, 0, 0, 192, 191, 0, 0, 64, 64, 0, 0, 0, 191, 0, 0, 192, 63, 0, 0, 128, 191, 0, 0, 0, 191, 0, 0, 192, 63, 0, 0, 128, 191, 80, 255, 255, 62, 0, 0, 192, 191, 0, 0, 64, 64, 80, 255, 255, 62, 0, 0, 192, 63, 0, 0, 64, 64, 80, 255, 255, 62, 0, 0, 192, 191, 0, 0, 128, 191, 80, 255, 255, 62, 0, 0, 192, 191, 0, 0, 64, 64, 80, 255, 255, 62, 0, 0, 192, 63, 0, 0, 64, 64, 0, 0, 0, 191, 0, 0, 192, 63, 0, 0, 64, 64, 80, 255, 255, 62, 0, 0, 192, 191, 0, 0, 64, 64, 0, 0, 0, 191, 254, 255, 0, 0, 0, 0, 255, 191, 254, 255, 0, 0, 0, 0, 255, 191, 254, 255, 0, 0, 0, 0, 255, 191, 254, 255, 0, 0, 0, 0, 255, 191, 253, 127, 255, 127, 253, 255, 255, 191, 253, 127, 255, 127, 253, 255, 255, 191, 253, 127, 255, 127, 253, 255, 255, 191, 253, 127, 255, 127, 253, 255, 255, 191, 252, 127, 254, 255, 254, 255, 255, 63, 1, 128, 249, 255, 253, 223, 254, 191, 1, 128, 249, 255, 253, 223, 254, 191, 1, 128, 249, 255, 253, 223, 254, 191)
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_4kwif")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_fccmt"]
+size = Vector3(3, 4, 1)
+
+[node name="Halls" type="MeshInstance3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+mesh = SubResource("ArrayMesh_u1fbg")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+shape = SubResource("BoxShape3D_fccmt")

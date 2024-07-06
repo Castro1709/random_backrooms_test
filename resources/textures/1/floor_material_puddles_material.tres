@@ -1,0 +1,7 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://cxorhcmhq4ck8"]
+
+[ext_resource type="Shader" uid="uid://boetwowl4vcy3" path="res://resources/textures/1/floor_material_puddles.tres" id="1_yd0e7"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_yd0e7")

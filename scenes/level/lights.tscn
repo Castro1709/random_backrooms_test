@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://b4lqbvfhovhb4"]
+
+[ext_resource type="Script" path="res://resources/textures/0/light.gd" id="1_yleib"]
+
+[node name="Light" type="OmniLight3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.05, 0)
+light_color = Color(1, 1, 0.541176, 1)
+light_energy = 3.0
+light_bake_mode = 1
+shadow_enabled = true
+distance_fade_enabled = true
+distance_fade_begin = 30.0
+distance_fade_shadow = 40.0
+omni_range = 9.0
+omni_attenuation = 0.5
+script = ExtResource("1_yleib")

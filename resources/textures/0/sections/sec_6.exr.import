@@ -1,0 +1,26 @@
+[remap]
+
+importer="2d_array_texture"
+type="CompressedTexture2DArray"
+uid="uid://bgc3yrdp4tfq5"
+path="res://.godot/imported/sec_6.exr-459fad092226596ed3bfa9be26e0e742.ctexarray"
+metadata={
+"vram_texture": false
+}
+
+[deps]
+
+source_file="res://resources/textures/0/sections/sec_6.exr"
+dest_files=["res://.godot/imported/sec_6.exr-459fad092226596ed3bfa9be26e0e742.ctexarray"]
+
+[params]
+
+compress/mode=3
+compress/high_quality=false
+compress/lossy_quality=0.7
+compress/hdr_compression=1
+compress/channel_pack=1
+mipmaps/generate=false
+mipmaps/limit=-1
+slices/horizontal=1
+slices/vertical=4

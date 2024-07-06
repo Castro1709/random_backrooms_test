@@ -1,0 +1,58 @@
+[gd_scene load_steps=7 format=3 uid="uid://bswg1pd5wmrls"]
+
+[ext_resource type="Script" path="res://classes/transition_handler.gd" id="1_gcqmq"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_vgusv"]
+size = Vector3(3, 4, 3)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jx0qy"]
+transparency = 1
+shading_mode = 0
+albedo_color = Color(0.0434783, 1, 0, 0.0941176)
+disable_receive_shadows = true
+
+[sub_resource type="BoxMesh" id="BoxMesh_qtqt1"]
+material = SubResource("StandardMaterial3D_jx0qy")
+size = Vector3(3, 4, 3)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_siujk"]
+transparency = 1
+shading_mode = 0
+albedo_color = Color(1, 0, 0, 0.0941176)
+disable_receive_shadows = true
+
+[sub_resource type="BoxMesh" id="BoxMesh_1wsct"]
+material = SubResource("StandardMaterial3D_siujk")
+size = Vector3(3, 4, 3)
+
+[node name="TransitionHandler" type="Node3D"]
+script = ExtResource("1_gcqmq")
+
+[node name="TransitionAreaA" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 0, 0)
+collision_layer = 32
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="TransitionAreaA"]
+shape = SubResource("BoxShape3D_vgusv")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="TransitionAreaA"]
+layers = 2
+gi_mode = 0
+mesh = SubResource("BoxMesh_qtqt1")
+
+[node name="TransitionAreaB" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 0, 0)
+collision_layer = 32
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="TransitionAreaB"]
+shape = SubResource("BoxShape3D_vgusv")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="TransitionAreaB"]
+layers = 2
+gi_mode = 0
+mesh = SubResource("BoxMesh_1wsct")
+
+[connection signal="body_entered" from="TransitionAreaA" to="." method="_on_transition_area_a_body_entered"]
+[connection signal="body_entered" from="TransitionAreaB" to="." method="_on_transition_area_b_body_entered"]

@@ -1,0 +1,71 @@
+[gd_scene load_steps=10 format=3 uid="uid://b3obj204afkcp"]
+
+[ext_resource type="Script" path="res://levels/level_0.gd" id="1_jdbpg"]
+[ext_resource type="PackedScene" uid="uid://44ur3v0ncv4" path="res://resources/textures/0/sections/sec_0.tscn" id="2_b2ycj"]
+[ext_resource type="PackedScene" uid="uid://2xsyw4t4lcea" path="res://resources/textures/0/sections/sec_1.tscn" id="3_te0r6"]
+[ext_resource type="PackedScene" uid="uid://vbls2r0lyuey" path="res://scenes/player.tscn" id="3_vcpi2"]
+[ext_resource type="AudioStream" uid="uid://b0kahg5yaa8vf" path="res://resources/textures/0/buzz.wav" id="8_x3qw8"]
+
+[sub_resource type="Environment" id="Environment_kp4yv"]
+background_mode = 1
+background_color = Color(0.163942, 0.133753, 0.0492895, 1)
+ssr_enabled = true
+ssr_max_steps = 32
+ssao_enabled = true
+ssil_enabled = true
+sdfgi_use_occlusion = true
+glow_enabled = true
+fog_enabled = true
+fog_light_color = Color(0.159472, 0.0995745, 1.20327e-08, 1)
+
+[sub_resource type="GDScript" id="GDScript_e0pvf"]
+script/source = "extends StaticBody3D
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	global_position = Vector3(Player.current_player.global_position.x,0.0,Player.current_player.global_position.z)
+"
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_0w62j"]
+size = Vector3(50, 0.5, 50)
+
+[sub_resource type="GDScript" id="GDScript_y5dq0"]
+script/source = "extends AudioStreamPlayer
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	play()
+
+func _on_finished() -> void:
+	play()
+"
+
+[node name="Level0" type="Node3D"]
+script = ExtResource("1_jdbpg")
+sections = Array[PackedScene]([ExtResource("2_b2ycj"), ExtResource("3_te0r6")])
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_kp4yv")
+
+[node name="Player" parent="." instance=ExtResource("3_vcpi2")]
+
+[node name="Sections" type="Node" parent="."]
+
+[node name="Static" type="StaticBody3D" parent="."]
+script = SubResource("GDScript_e0pvf")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Static"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.2, -0.2, 0)
+shape = SubResource("BoxShape3D_0w62j")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Static"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.2, 8.8, 0)
+shape = SubResource("BoxShape3D_0w62j")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Static"]
+stream = ExtResource("8_x3qw8")
+volume_db = -15.0
+script = SubResource("GDScript_y5dq0")
+
+[connection signal="finished" from="Static/AudioStreamPlayer" to="Static/AudioStreamPlayer" method="_on_finished"]

@@ -1,0 +1,88 @@
+[gd_scene load_steps=9 format=4 uid="uid://t2tfhcojh7rv"]
+
+[ext_resource type="Texture2D" uid="uid://bvhgewnik8r53" path="res://resources/textures/1/woodPlants/oak_veneer_01_diff_1k.jpg" id="1_mywf1"]
+[ext_resource type="Texture2D" uid="uid://c1jvjhmjjsnm" path="res://resources/textures/1/woodPlants/oak_veneer_01_rough_1k.png" id="2_ge26m"]
+[ext_resource type="Texture2D" uid="uid://c8h8m2nawxc2t" path="res://resources/textures/1/painting/enjoy_while_you_can.png" id="3_ssknp"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_84lte"]
+resource_name = "Wood"
+cull_mode = 2
+albedo_texture = ExtResource("1_mywf1")
+metallic_texture = ExtResource("2_ge26m")
+metallic_texture_channel = 2
+roughness_texture = ExtResource("2_ge26m")
+roughness_texture_channel = 1
+normal_enabled = true
+normal_texture = ExtResource("2_ge26m")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_f5aw3"]
+resource_name = "Painting"
+cull_mode = 2
+roughness = 0.0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_tva80"]
+_surfaces = [{
+"aabb": AABB(-0.5, 0.01625, -0.5, 1, 0.025, 1.00001),
+"format": 34896613377,
+"index_count": 72,
+"index_data": PackedByteArray("DQAKAAwADQAIAAoADgAIAA0ADgAJAAgADwAJAA4ADwALAAkADAALAA8ADAAKAAsAAQALAAMAAQAJAAsAAgAIAAAAAgAKAAgABwAOAAYABwAPAA4ABQAMAAQABQANAAwAAwAKAAIAAwALAAoAAAAJAAEAAAAIAAkABAAPAAcABAAMAA8ABgANAAUABgAOAA0A"),
+"name": "Wood",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 16,
+"vertex_data": PackedByteArray("AAAAAP7/AAD//wAA/v8AAAAAAAAAAAAA//8AAAAAAABmBpmZZgYAAGYGmZmX+QAAmPmZmZf5AACY+ZmZZgYAAAAA///+/wAA//////7/AAAAAP//AAAAAP////8AAAAAZgb//2YGAABmBv//l/kAAJj5//+X+QAAmPn//2YGAAA=")
+}, {
+"aabb": AABB(-0.475, 0.03125, -0.475, 0.95, 9.99868e-06, 0.95),
+"format": 34896613377,
+"index_count": 6,
+"index_data": PackedByteArray("AAACAAEAAAADAAIA"),
+"name": "Painting",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 4,
+"vertex_data": PackedByteArray("AAAAAAAAAAAAAAAA//8AAP//AAD//wAA//8AAAAAAAA=")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_sp08b"]
+resource_name = "painting_Plane"
+_surfaces = [{
+"aabb": AABB(-0.5, 0.01625, -0.5, 1, 0.025, 1.00001),
+"attribute_data": PackedByteArray("wR77/wMA+//BHgMAwR77/wMA+/8DAAMAAwADAMEeAwBeD5X5Xg9pBmUPlfleD5X5ZQ9pBmUPlfleD2kGZQ9pBloY+/9pBvv/Whj7/2kG+/9aGAMAWhgDAFoY+/9aGPv/aQb7/2kGAwBpBvv/aQYDAGkGAwBpBgMAWhgDAFoYAwDPDJX5zwxpBs8MlfnPDGkG9BGV+c8Mlfn0EZX5zwyV+fQRaQb0EWkG9BGV+fQRlfnPDGkGzwxpBvQRaQb0EWkG"),
+"format": 34896613399,
+"index_count": 72,
+"index_data": PackedByteArray("JQAZACEAJQARABkAKQASACYAKQAVABIALgAWACoALgAeABYAIgAdAC0AIgAaAB0AAwAfAAcAAwAXAB8ABQATAAEABQAbABMADwArAA0ADwAvACsACwAjAAkACwAnACMABgAYAAQABgAcABgAAAAUAAIAAAAQABQACAAsAA4ACAAgACwADAAkAAoADAAoACQA"),
+"material": SubResource("StandardMaterial3D_84lte"),
+"name": "Wood",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 48,
+"vertex_data": PackedByteArray("AAAAAP7//78AAAAA/v9U1f//AAD+//+///8AAP7/VNUAAAAAAAD//wAAAAAAAFTV//8AAAAA/////wAAAABU1WYGmZlmBv+/ZgaZmWYGVNVmBpmZl/n//2YGmZmX+VTVmPmZmZf5//+Y+ZmZl/lU1Zj5mZlmBv+/mPmZmWYGVNUAAP///v//vwAA///+//+/AAD///7/VNUAAP///v9U1f/////+//+///////7/VNX//////v//v//////+/1TVAAD//wAA//8AAP//AAD/vwAA//8AAFTVAAD//wAAVNX/////AAD///////8AAFTV/////wAA/7//////AABU1WYG//9mBv+/Zgb//2YG/79mBv//ZgZU1WYG//9mBlTVZgb//5f5//9mBv//l/n/v2YG//+X+VTVZgb//5f5VNWY+f//l/n//5j5//+X+VTVmPn//5f5/7+Y+f//l/lU1Zj5//9mBv+/mPn//2YGVNWY+f//Zgb/v5j5//9mBlTV/3//f1TVVNX/f/9/qqpUVf+//79U1VTV/7//v6qqVFX/f/9/qqpUVf+//7+qqlRV/7//v1TVVNX/f/9/VNVU1f9//3////9/qqqqqlTVVNX/f/9/qqqqqv///3+qqlRV/7//v////3+qqqqqVNVU1f+//7+qqqqq////f6qqVFX/f/9/////f6qqqqqqqlRV/7//v////3+qqqqqqqpUVf+//7+qqqqq////f1TVVNX/f/9/qqqqqv///39U1VTV")
+}, {
+"aabb": AABB(-0.475, 0.03125, -0.475, 0.95, 9.99868e-06, 0.95),
+"attribute_data": PackedByteArray("BgAGAAYA+P/4//j/+P8GAA=="),
+"format": 34896613399,
+"index_count": 6,
+"index_data": PackedByteArray("AAACAAEAAAADAAIA"),
+"material": SubResource("StandardMaterial3D_f5aw3"),
+"name": "Painting",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 4,
+"vertex_data": PackedByteArray("AAAAAAAA/78AAAAA////v///AAD///+///8AAAAA/7////9/////f////3////9/")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_tva80")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3xui8"]
+albedo_texture = ExtResource("3_ssknp")
+metallic_specular = 0.28
+roughness = 0.0
+
+[node name="Painting" type="Node3D"]
+
+[node name="Plane" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0, -1, 0, 1, 0, 0, 0, 0)
+mesh = SubResource("ArrayMesh_sp08b")
+skeleton = NodePath("")
+surface_material_override/1 = SubResource("StandardMaterial3D_3xui8")

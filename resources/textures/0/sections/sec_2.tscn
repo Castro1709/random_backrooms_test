@@ -1,0 +1,43 @@
+[gd_scene load_steps=5 format=3 uid="uid://dprin2x731xmy"]
+
+[ext_resource type="PackedScene" uid="uid://bwjb5lkb6j3sw" path="res://resources/textures/0/carpet.blend" id="1_2lkcn"]
+[ext_resource type="PackedScene" uid="uid://d1nqpwrp3kisd" path="res://resources/textures/0/ceiling.tscn" id="5_pn753"]
+[ext_resource type="PackedScene" uid="uid://cdvy20g6edy0v" path="res://resources/textures/0/ceiling_3.tscn" id="7_8ypoo"]
+[ext_resource type="PackedScene" uid="uid://gadose58agy2" path="res://resources/textures/0/ceiling_2.tscn" id="8_hga57"]
+
+[node name="Level_0_sec_2" type="Node3D"]
+
+[node name="Floor" type="Node3D" parent="."]
+
+[node name="carpet" parent="Floor" instance=ExtResource("1_2lkcn")]
+
+[node name="Walls" type="Node3D" parent="."]
+
+[node name="Ceiling" type="Node3D" parent="."]
+
+[node name="ceiling8" parent="Ceiling" instance=ExtResource("5_pn753")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 3.95, -9)
+
+[node name="ceiling4" parent="Ceiling" instance=ExtResource("7_8ypoo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 3.95, -9)
+
+[node name="ceiling5" parent="Ceiling" instance=ExtResource("7_8ypoo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 3.95, 0)
+
+[node name="ceiling6" parent="Ceiling" instance=ExtResource("7_8ypoo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 3.95, 9)
+
+[node name="ceiling9" parent="Ceiling" instance=ExtResource("7_8ypoo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.95, 0)
+
+[node name="ceiling11" parent="Ceiling" instance=ExtResource("8_hga57")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 3.95, 0)
+
+[node name="ceiling12" parent="Ceiling" instance=ExtResource("8_hga57")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.95, 9)
+
+[node name="ceiling13" parent="Ceiling" instance=ExtResource("8_hga57")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.95, -9)
+
+[node name="ceiling10" parent="Ceiling" instance=ExtResource("8_hga57")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 3.95, 9)
